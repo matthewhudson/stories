@@ -5,16 +5,16 @@ Inspiration: https://github.com/stilvoid/podless/blob/master/src/lambda.py
 
 http server as server
   when server listen path:"/" method:"get" as req
-    for feed in feeds
+    foreach feeds as feed
       handle_feed bucket:string name:feed.name url:feed.url
 
 function handle_feed bucket:string name:string url:string returns null
   feed_entries = matthewhudson/parse-url-feed parse url:url
 
-  foreach feed_entry in feed_entries
+  foreach feed_entries as feed_entry
     skip = false
 
-    foreach enclosure in feed_entry.enclosures:
+    foreach feed_entry.enclosures as enclosure
       podcast_url = enclosure.href
 
       ###
