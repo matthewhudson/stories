@@ -9,3 +9,11 @@ http server as server
     repos = github api url:"/orgs/open-microservices" 
     foreach repos as repo
       handle_repo repo:repo
+
+function handle_repo org:string repo:string returns null
+  # PUT /repos/:owner/:repo/topics
+  topicUrl = "/repos/" + org + "/" + repo + "/topics"
+  repos = github api 
+    url:topicUrl
+    method:"put"
+    data:{"names":[]}

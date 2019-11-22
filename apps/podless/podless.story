@@ -9,7 +9,7 @@ http server as server
       handle_feed bucket:string name:feed.name url:feed.url
 
 function handle_feed bucket:string name:string url:string returns null
-  feed_entries = matthewhudson/parse-url-feed parse url:url
+  feed_entries = matthewhudson/oms-parse-rss parse url:url
 
   foreach feed_entries as feed_entry
     skip = false
